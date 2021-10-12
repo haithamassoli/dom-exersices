@@ -11,30 +11,30 @@
       }
     </style>
     <script>
-      /* TODO: write JS code here */
+      let colors = ["blue", "red", "green"];
+
+      function changeColor() {
+        let color = this.style.backgroundColor;
+        let idx = colors.indexOf(color); // get index of current color
+        idx++; // change to next color
+        if (idx == colors.length) {
+          // start over after the last color
+          idx = 0;
+        }
+        this.style.backgroundColor = colors[idx];
+      }
+
+      function init() {
+        let mydiv = document.getElementById("mydiv");
+        let rnd = Math.floor(Math.random() * colors.length); // random color index
+        mydiv.style.backgroundColor = colors[rnd];
+        mydiv.onclick = changeColor;
+      }
+
+      window.onload = init;
     </script>
   </head>
   <body>
     <div id="mydiv"></div>
   </body>
-  <script>
-    let myDiv = document.querySelector("#mydiv");
-
-    let color = ["blue", "red", "green"];
-    myDiv.style.backgroundColor = color[Math.floor(Math.random() * 3)];
-    let conter = Math.floor(Math.random() * 3);
-    function changeBack() {
-      conter == 0
-        ? (myDiv.style.backgroundColor = color[0])
-        : conter == 1
-        ? (myDiv.style.backgroundColor = color[1])
-        : conter == 2
-        ? (myDiv.style.backgroundColor = color[2])
-        : (conter = -1);
-      conter++;
-    }
-
-    myDiv.addEventListener("click", changeBack);
-    console.log(Math.floor(Math.random() * 3));
-  </script>
 </html>
