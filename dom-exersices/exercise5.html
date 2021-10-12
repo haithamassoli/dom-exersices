@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise #5: Input check</title>
+    <style>
+      * {
+        font-family: Arial, sans-serif;
+      }
+
+      .err {
+        color: red;
+        font-size: 0.7em;
+      }
+      #submitBtn {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="pw">
+      <table>
+        <tr>
+          <td>Password (min 6 characters):</td>
+          <td>
+            <input
+              type="password"
+              name="password1"
+              id="password1"
+              size="10"
+              placeholder="Password"
+            />
+          </td>
+          <td>
+            <div id="pw1_check" class="err"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>Repeat password:</td>
+          <td>
+            <input
+              type="password"
+              name="password2"
+              id="password2"
+              size="10"
+              placeholder="Password"
+            />
+          </td>
+          <td>
+            <div id="pw2_check" class="err"></div>
+          </td>
+        </tr>
+      </table>
+
+      <input type="submit" value="Submit" id="submitBtn" />
+    </form>
+
+    <!-- You are given a form with two password fields and a submit button.
+    Perform input check and display an error message next the the corresponding field if there is an error.
+    Passwords must be at least 6 characters long.
+    The two passwords must match.
+    The placeholders for the error messages have already been prepared (div-s with class "err").
+    By default the submit button should be hidden. Display the button only when there are no errors. -->
+    <script>
+      let btn = document.querySelector("#submitBtn");
+      let password1 = document.querySelector("#password1");
+      let password2 = document.querySelector("#password2");
+      let error = document.querySelectorAll(".err");
+      let check1 = false;
+      let check2 = false;
+
+      btn.style.display = "none";
+      password1.addEventListener("blur", () => {
+        password1.value.length < 6
+          ? (error[0].innerHTML = "Too short")
+          : (error[0].innerHTML = "");
+        error[0].innerHTML == "" ? (check1 = true) : (check1 = false);
+      });
+      password2.addEventListener("blur", () => {
+        password2.value.length != password1.value.length
+          ? (error[1].innerHTML = "two passwords must match")
+          : (error[1].innerHTML = "");
+        error[1].innerHTML == "" ? (check2 = true) : (check2 = false);
+        check2 == false || check1 == false
+          ? (btn.style.display = "none")
+          : (btn.style.display = "block");
+      });
+    </script>
+  </body>
+</html>

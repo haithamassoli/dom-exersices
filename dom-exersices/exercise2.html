@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise #2: Changing colors</title>
+    <style>
+      #mydiv {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+      }
+    </style>
+    <script>
+      /* TODO: write JS code here */
+    </script>
+  </head>
+  <body>
+    <div id="mydiv"></div>
+  </body>
+  <script>
+    let myDiv = document.querySelector("#mydiv");
+
+    let color = ["blue", "red", "green"];
+    myDiv.style.backgroundColor = color[Math.floor(Math.random() * 3)];
+    let conter = Math.floor(Math.random() * 3);
+    function changeBack() {
+      conter == 0
+        ? (myDiv.style.backgroundColor = color[0])
+        : conter == 1
+        ? (myDiv.style.backgroundColor = color[1])
+        : conter == 2
+        ? (myDiv.style.backgroundColor = color[2])
+        : (conter = -1);
+      conter++;
+    }
+
+    myDiv.addEventListener("click", changeBack);
+    console.log(Math.floor(Math.random() * 3));
+  </script>
+</html>
