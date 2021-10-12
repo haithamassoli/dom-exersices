@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Exercise #7: Simple playlist</title>
-    <link rel="stylesheet" href="exercise7.css">
+    <link rel="stylesheet" href="exercise7.css" />
+  </head>
+  <body>
+    <form>
+      <input type="text" id="songTextInput" size="40" placeholder="Song name" />
+      <input type="button" id="addButton" value="Add Song" />
+    </form>
+
+    <ul id="playlist"></ul>
     <script>
-        /* TODO this is for you to complete */
+      let songText = document.querySelector("#songTextInput");
+      let addButton = document.querySelector("#addButton");
+      let playList = document.querySelector("#playlist");
+
+      function addSong() {
+        let songName = document.createElement("p");
+        songName.innerHTML = songText.value;
+        playList.appendChild(songName);
+      }
+      addButton.addEventListener("click", addSong);
     </script>
-</head>
-<body>
-
-<form>
-    <input type="text" id="songTextInput" size="40" placeholder="Song name">
-    <input type="button" id="addButton" value="Add Song">
-</form>
-
-<ul id="playlist">
-</ul>
-
-</body>
+  </body>
 </html>
-
